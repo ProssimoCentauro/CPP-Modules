@@ -13,6 +13,10 @@
 #include <string.h>
 #include "Contact.hpp"
 
+
+Contact::Contact() {};
+Contact::~Contact() {};
+
 void	Contact::set_index(int index)
 {
 	this->index = index;

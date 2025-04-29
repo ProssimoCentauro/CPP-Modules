@@ -20,7 +20,7 @@ class PhoneBook
 {
 	private:
 		Contact contacts[8];
-		int	size = 0;
+		int	size;
 
 	public:
 		PhoneBook();
@@ -29,7 +29,8 @@ class PhoneBook
 		int	get_size(void);
 		//setters
 		void	add_contact(std::string info[5]);
-
+		//print funcs
+		void	print_contact(int index);
 };
 
 #endif

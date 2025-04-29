@@ -19,7 +19,7 @@
 class Contact
 {
 	private:
-		int	id;
+		int	index;
 		std::string	first_name;
 		std::string	last_name;
 		std::string nickname;
@@ -31,7 +31,6 @@ class Contact
 		~Contact();
 
 		//getters
-		int	index;
 		std::string	get_first_name(void);
 		std::string	get_last_name(void);
 		std::string	get_nickname(void);

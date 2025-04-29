@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 14:49:37 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/04/29 20:49:56 by rtodaro          ###   ########.fr       */
+/*   Created: 2025/04/29 20:50:37 by rtodaro           #+#    #+#             */
+/*   Updated: 2025/04/29 20:59:40 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#include "PhoneBook.hpp"
 
-#include "Contact.hpp"
-#include <string>
-
-class PhoneBook
+void	get_info(std::string* info)
 {
-	private:
-		Contact contacts[8];
-		int	size = 0;
+	info[0] = "ciao";
+	info[1] = "ciao";
+	info[2] = "ciao";
+	info[3] = "ciao";
+	info[4] = "ciao";
+}
 
-	public:
-		PhoneBook();
-		~PhoneBook();
-		//getters
-		int	get_size(void);
-		//setters
-		void	add_contact(std::string info[5]);
+int	main()
+{
+	PhoneBook phonebook;
+	std::string info[5];
+	std::cout << "Hi, welcome to your PhoneBook!" << std::endl;
+	std::cout << "COMMANDS: ADD, SEARCH, EXIT" << std::endl;
 
-};
+	get_info(info);
+	phonebook.add_contact(info);
 
-#endif
+	return(EXIT_SUCCESS);
+}

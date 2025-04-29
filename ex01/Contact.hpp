@@ -6,13 +6,14 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:41:31 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/04/29 16:03:18 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/04/29 20:35:48 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
+#include <iostream>
 #include <string>
 
 class Contact
@@ -43,6 +44,7 @@ class Contact
 		void	set_nickname(std::string str);
 		void	set_phone_number(std::string str);
 		void	set_darkest_secret(std::string str);
-		void	display
-}
+		//print functions
+		void	print_info(void);
+};
 #endif

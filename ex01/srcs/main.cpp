@@ -42,12 +42,11 @@ static int		check_number(std::string number)
 static int	get_index(PhoneBook& phonebook)
 {
 	std::string index;
-
 	while (42)
 	{
 		std::cout << "SELECT THE CONTACT TO SEE DETAILS: ";
 		std::getline(std::cin, index);
-		if (index.length() > 1 || index[0] < '0' || index[0] > '7' || index[0] > phonebook.get_size() + '0')
+		if (index.length() > 1 || index[0] < '0' || index[0] > '7' || index[0] >= phonebook.get_size() + '0')
 		{
 			std::cout << RED << "INVALID INDEX!" << RESET << std::endl;
 			continue ;
@@ -70,7 +69,11 @@ static int	execute_command(std::string line, PhoneBook& phonebook)
 	}
 	else if (line == "SEARCH")
 	{
-		phonebook.print_contacts();
+		if (phonebook.print_contacts() == false)
+		{
+			std::cout << RED << "NO CONTACTS IN YOUR PHONEBOOK!\n" << RESET << std::endl;
+			return (0);
+		}
 		phonebook.print_contact(get_index(phonebook));
 	}
 	else if (line == "EXIT")

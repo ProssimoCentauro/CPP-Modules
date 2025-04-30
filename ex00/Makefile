@@ -1,6 +1,7 @@
 NAME = megaphone
 
-SRCS = megaphone.cpp
+SRCS_FOLDER = ./srcs/
+SRCS = $(SRCS_FOLDER)megaphone.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

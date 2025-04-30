@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <sstream>
 
 PhoneBook::PhoneBook() : size(0) {};
 PhoneBook::~PhoneBook() {};
@@ -31,31 +30,38 @@ void	PhoneBook::add_contact(std::string info[5])
 {
 	int	i;
 	
+	if (this->size == 8)
+		this->size = 0;
 	i = this->size;
-	contacts[i % 8].set_index(i % 8);
-	contacts[i % 8].set_first_name(info[0]);
-	contacts[i % 8].set_last_name(info[1]);
-	contacts[i % 8].set_nickname(info[2]);
-	contacts[i % 8].set_phone_number(info[3]);
-	contacts[i % 8].set_darkest_secret(info[4]);
+	contacts[i].set_index(i);
+	contacts[i].set_first_name(info[0]);
+	contacts[i].set_last_name(info[1]);
+	contacts[i].set_nickname(info[2]);
+	contacts[i].set_phone_number(info[3]);
+	contacts[i].set_darkest_secret(info[4]);
 	this->size++;
 }
 
-static void print_column(std::string str) {
-    if (str.length() > 10)
-        std::cout << str.substr(0, 9) << ".";
-    else
-        std::cout << std::string(10 - str.length(), ' ') << str;
+static void print_column(std::string str)
+{
+	if (str.length() > 10)
+		std::cout << str.substr(0, 9) << ".";
+	else
+		std::cout << std::string(10 - str.length(), ' ') << str;
 }
 
-void PhoneBook::print_contacts(void) {
-    int i = 0;
+bool PhoneBook::print_contacts(void)
+{
+	int i = 0;
+	
+	if(contacts[i].get_first_name().empty())
+		return (false);
+	
+	std::cout << "+----------+----------+----------+----------+" << std::endl;
+	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
+	std::cout << "+----------+----------+----------+----------+" << std::endl;
 
-    std::cout << "+----------+----------+----------+----------+" << std::endl;
-    std::cout << "|     index|first name| last name|  nickname|" << std::endl;
-    std::cout << "+----------+----------+----------+----------+" << std::endl;
-
-	while (i < this->size && i < 8)
+	while (contacts[i].get_first_name().length() != 0)
 	{
 		std::cout << "|";
 		std::cout << "         " << i << "|";
@@ -68,5 +74,6 @@ void PhoneBook::print_contacts(void) {
 		i++;
 		std::cout << "+----------+----------+----------+----------+" << std::endl;
 	}
+	return (true);
 }
 

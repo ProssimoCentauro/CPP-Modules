@@ -31,7 +31,7 @@ class PhoneBook
 		void	add_contact(std::string info[5]);
 		//print funcs
 		void	print_contact(int index);
-		void	print_contacts(void);
+		bool	print_contacts(void);
 };
 
 #endif

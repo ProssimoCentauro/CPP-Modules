@@ -79,7 +79,7 @@ static int	execute_command(std::string line, PhoneBook& phonebook)
 	else if (line == "EXIT")
 		return (1);
 	else
-		std::cout << RED << "\nINVALID COMMAND!\n" << RESET << std::endl;
+		std::cout << RED << "INVALID COMMAND!\n" << RESET << std::endl;
 	return (0);
 }
 

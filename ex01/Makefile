@@ -1,21 +1,23 @@
 NAME = phonebook
 
 SRCS_FOLDER = ./srcs/
+INCLUDES_FOLDER = ./includes
 SRCS = $(SRCS_FOLDER)PhoneBook.cpp $(SRCS_FOLDER)Contact.cpp $(SRCS_FOLDER)main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+IFLAGS = -I $(INCLUDES_FOLDER)
 RM = rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CPPFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CPPFLAGS) $(IFLAGS) -o $(NAME) $(OBJS) 
 
-%.o: %.c
-	$(CC) $(CPPFLAGS) -c $< -o $@
+%.o: %.cpp
+	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)

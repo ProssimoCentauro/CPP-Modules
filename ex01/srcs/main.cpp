@@ -6,7 +6,7 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:50:37 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/04/30 16:42:00 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/04/30 18:17:20 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 #define RESET "\033[0m"
 
 static int		check_number(std::string number);
+static int		get_index(PhoneBook& phonebook);
 static int		execute_command(std::string line, PhoneBook& phonebook);
+static int		input_contact_field(const std::string str, std::string& info, int phone_number);
 static int		create_info(std::string* info, int size);
 
 static int		check_number(std::string number)
@@ -35,6 +37,24 @@ static int		check_number(std::string number)
 		i++;
 	}
 	return (0);
+}
+
+static int	get_index(PhoneBook& phonebook)
+{
+	std::string index;
+
+	while (42)
+	{
+		std::cout << "SELECT THE CONTACT TO SEE DETAILS: ";
+		std::getline(std::cin, index);
+		if (index.length() > 1 || index[0] < '0' || index[0] > '7' || index[0] > phonebook.get_size() + '0')
+		{
+			std::cout << RED << "INVALID INDEX!" << RESET << std::endl;
+			continue ;
+		}
+		break ;
+	}
+	return (index[0] - '0');
 }
 
 static int	execute_command(std::string line, PhoneBook& phonebook)
@@ -51,6 +71,7 @@ static int	execute_command(std::string line, PhoneBook& phonebook)
 	else if (line == "SEARCH")
 	{
 		phonebook.print_contacts();
+		phonebook.print_contact(get_index(phonebook));
 	}
 	else if (line == "EXIT")
 		return (1);
@@ -59,7 +80,7 @@ static int	execute_command(std::string line, PhoneBook& phonebook)
 	return (0);
 }
 
-static int	input_contact_field(const std::string str, std::string info, int phone_number)
+static int	input_contact_field(const std::string str, std::string& info, int phone_number)
 {
 	while (42)
 	{

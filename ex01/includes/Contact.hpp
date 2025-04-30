@@ -6,7 +6,7 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 17:41:31 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/04/29 20:35:48 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/04/30 14:39:44 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Contact
 		~Contact();
 
 		//getters
+		int			get_index(void);
 		std::string	get_first_name(void);
 		std::string	get_last_name(void);
 		std::string	get_nickname(void);

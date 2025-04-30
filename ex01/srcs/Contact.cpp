@@ -6,7 +6,7 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:11:31 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/04/29 23:30:19 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/04/30 14:40:22 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void	Contact::set_phone_number(std::string str)
 void	Contact::set_darkest_secret(std::string str)
 {
 	this->darkest_secret = str;
+}
+
+int	Contact::get_index(void)
+{
+	return (this->index);
 }
 
 std::string Contact::get_first_name(void)

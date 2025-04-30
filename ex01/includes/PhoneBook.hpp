@@ -6,7 +6,7 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:49:37 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/04/29 20:49:56 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/04/30 14:25:14 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class PhoneBook
 		void	add_contact(std::string info[5]);
 		//print funcs
 		void	print_contact(int index);
+		void	print_contacts(void);
 };
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:22:18 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/04/30 17:39:06 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/05/05 14:40:38 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : size(0) {};
+PhoneBook::PhoneBook() : size(0), index(0) {};
 PhoneBook::~PhoneBook() {};
 
 
@@ -29,17 +29,20 @@ void	PhoneBook::print_contact(int index)
 void	PhoneBook::add_contact(std::string info[5])
 {
 	int	i;
-	
-	if (this->size == 8)
-		this->size = 0;
-	i = this->size;
+
+	i = this->index;
 	contacts[i].set_index(i);
 	contacts[i].set_first_name(info[0]);
 	contacts[i].set_last_name(info[1]);
 	contacts[i].set_nickname(info[2]);
 	contacts[i].set_phone_number(info[3]);
 	contacts[i].set_darkest_secret(info[4]);
-	this->size++;
+	
+	if (++this->index == 8)
+		this->index = 0;
+
+	if (this->size < 8)
+		this->size++;
 }
 
 static void print_column(std::string str)
@@ -61,7 +64,7 @@ bool PhoneBook::print_contacts(void)
 	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
 
-	while (contacts[i].get_first_name().length() != 0)
+	while (i < 8 && !contacts[i].get_first_name().empty())
 	{
 		std::cout << "|";
 		std::cout << "         " << i << "|";
@@ -77,3 +80,11 @@ bool PhoneBook::print_contacts(void)
 	return (true);
 }
 
+bool	PhoneBook::is_full(void)
+{
+	//if (!contacts[7].get_first_name().empty())
+	//	return (true);
+	if (this->size == 8)
+		return (true);
+	return (false);
+}

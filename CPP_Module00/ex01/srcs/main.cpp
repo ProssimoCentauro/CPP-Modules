@@ -6,7 +6,7 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:50:37 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/04/30 18:17:20 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/05/05 13:59:20 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int		check_number(std::string number);
 static int		get_index(PhoneBook& phonebook);
 static int		execute_command(std::string line, PhoneBook& phonebook);
 static int		input_contact_field(const std::string str, std::string& info, int phone_number);
-static int		create_info(std::string* info, int size);
+static int		create_info(std::string* info, PhoneBook& phonebook);
 
 static int		check_number(std::string number)
 {
@@ -32,7 +32,7 @@ static int		check_number(std::string number)
 
 	while (number[i])
 	{
-		if (number[i] <= '0' || number[i] >= '9')
+		if (number[i] < '0' || number[i] > '9')
 			return (1);
 		i++;
 	}
@@ -62,7 +62,7 @@ static int	execute_command(std::string line, PhoneBook& phonebook)
 
 	if (line == "ADD")
 	{
-		if (create_info(info, phonebook.get_size()) == 1)
+		if (create_info(info, phonebook) == 1)
 			return (1);
 		phonebook.add_contact(info);
 		std::cout << GREEN << "\nCONTACT ADDED SUCCESSFULLY!\n" << RESET << std::endl;
@@ -109,9 +109,9 @@ static int	input_contact_field(const std::string str, std::string& info, int pho
 	return (0);
 }
 
-static int	create_info(std::string* info, int size)
+static int	create_info(std::string* info, PhoneBook& phonebook)
 {
-	if (size >= 8)
+	if (phonebook.is_full())
 	{
 		std::cout << YELLOW << "\n8 contacts limit reached." << std::endl;
 		std::cout << "Adding another contact will overwrite the oldest added contact!\n" << RESET << std::endl;

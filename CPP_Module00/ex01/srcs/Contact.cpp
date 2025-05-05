@@ -6,7 +6,7 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:11:31 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/04/30 14:40:22 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/05/05 14:48:52 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ void	Contact::print_info(void)
 	std::cout << "nickname: " << this->get_nickname() << std::endl;
 	std::cout << "phone number: " << this->get_phone_number() << std::endl;
 	std::cout << "darkset secret: " << this->get_darkest_secret() << std::endl;
+	std::cout << std::endl;
 }

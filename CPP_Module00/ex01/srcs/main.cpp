@@ -6,7 +6,7 @@
 /*   By: rtodaro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 20:50:37 by rtodaro           #+#    #+#             */
-/*   Updated: 2025/05/05 13:59:20 by rtodaro          ###   ########.fr       */
+/*   Updated: 2025/05/05 18:01:56 by rtodaro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static int	get_index(PhoneBook& phonebook)
 	{
 		std::cout << "SELECT THE CONTACT TO SEE DETAILS: ";
 		std::getline(std::cin, index);
+		if (!std::cin)
+			exit (1);
 		if (index.length() > 1 || index[0] < '0' || index[0] > '7' || index[0] >= phonebook.get_size() + '0')
 		{
 			std::cout << RED << "INVALID INDEX!" << RESET << std::endl;

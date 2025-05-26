@@ -14,9 +14,9 @@
 #define RESET "\033[0m"
 
 
-std::ifstream	if_open_file(std::string filename);
-std::ofstream	of_open_file(std::string filename);
 
+void if_open_file(std::ifstream &infile, const char* filename);
+void of_open_file(std::ofstream &outfile, const char* filename);
 void	check_args(int ac);
 
 #endif

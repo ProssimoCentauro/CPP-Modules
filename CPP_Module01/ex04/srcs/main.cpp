@@ -16,9 +16,10 @@ int	main(int ac, char **av)
 
 
 	new_file = filename + ".replace";
-	infile.open(av[1]);
-	outfile.open(new_file.c_str());
 
+	if_open_file(infile, av[1]);
+	of_open_file(outfile, new_file.c_str());
+	
 	while (std::getline(infile, line))
 	{
 		size_t	i = 0;

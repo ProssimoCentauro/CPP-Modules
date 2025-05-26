@@ -1,28 +1,26 @@
 #include "sed.hpp"
-/*
-std::ifstream	if_open_file(std::string filename)
+
+void if_open_file(std::ifstream &infile, const char* filename)
 {
-	std::ifstream infile(filename);
-	
+    infile.open(filename);
 	if (!infile)
 	{
-		std::cout << RED << "ERROR OPENING FILE!" << RESET << std::endl;
+		std::cerr << RED << "Error: cannot open input file.\n"
+			<< RESET;
 		std::exit(EXIT_FAILURE);
 	}
-	return (infile);
 }
 
-std::ofstream	of_open_file(std::string filename)
+void of_open_file(std::ofstream &outfile, const char* filename)
 {
-	std::ofstream outfile(filename);
-	
+    outfile.open(filename);
 	if (!outfile)
 	{
-		std::cout << RED << "ERROR OPENING FILE!" << RESET << std::endl;
+		std::cerr << RED << "Error: cannot open input file.\n"
+			<< RESET;
 		std::exit(EXIT_FAILURE);
 	}
-	return (outfile);
-}*/
+}
 
 void	check_args(int ac)
 {

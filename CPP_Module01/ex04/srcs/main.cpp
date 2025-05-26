@@ -1,0 +1,43 @@
+#include "sed.hpp"
+
+int	main(int ac, char **av)
+{
+	
+	check_args(ac);
+
+	std::string		line;
+	std::string		filename = av[1];
+	std::string		s1 = av[2];
+	std::string		s2 = av[3];
+	std::string		new_file;
+	std::ifstream	infile;
+	std::ofstream	outfile;
+	size_t			pos;
+
+
+	new_file = filename + ".replace";
+	infile.open(av[1]);
+	outfile.open(new_file.c_str());
+
+	while (std::getline(infile, line))
+	{
+		size_t	i = 0;
+		while (line[i])
+		{
+			pos = line.substr(i).find(s1);
+			if (pos != std::string::npos)
+			{
+				outfile << line.substr(i, pos);
+				outfile << s2;
+				i += pos + s1.length();
+			}
+			else
+			{
+				outfile << line.substr(i);
+				break ;
+			}
+		}
+		outfile << std::endl;
+	}
+	return (EXIT_SUCCESS);
+}

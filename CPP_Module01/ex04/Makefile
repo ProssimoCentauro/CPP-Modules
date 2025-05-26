@@ -1,8 +1,8 @@
-NAME = ViolenceTest
+NAME = sed
 
 SRCS_FOLDER = ./srcs/
 INCLUDES_FOLDER = ./includes
-SRCS = $(SRCS_FOLDER)HumanA.cpp $(SRCS_FOLDER)HumanB.cpp $(SRCS_FOLDER)Weapon.cpp $(SRCS_FOLDER)main.cpp
+SRCS = $(SRCS_FOLDER)utils.cpp $(SRCS_FOLDER)main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

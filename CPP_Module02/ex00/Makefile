@@ -2,7 +2,7 @@ NAME = Fixed
 
 SRCS_FOLDER = ./srcs/
 INCLUDES_FOLDER = ./includes
-SRCS = $(SRCS_FOLDER)Harl.cpp $(SRCS_FOLDER)main.cpp
+SRCS = $(SRCS_FOLDER)Fixed.cpp $(SRCS_FOLDER)main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -24,6 +24,11 @@ int	main(int ac, char **av)
 	ss << infile.rdbuf();
 	line = ss.str();
 	
+	if (s1.length() == 0)
+	{
+		outfile << line;
+		return (EXIT_SUCCESS);
+	}	
 	size_t	i = 0;
 	while (line[i])
 	{

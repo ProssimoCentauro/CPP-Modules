@@ -5,7 +5,7 @@ Fixed::Fixed() : _rawBits(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& other)// : _value(other._value)
+Fixed::Fixed(const Fixed& other)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
@@ -13,23 +13,13 @@ Fixed::Fixed(const Fixed& other)// : _value(other._value)
 
 Fixed::Fixed(const int number)
 {	std::cout << "Int constructor called" << std::endl;
-	this->_rawBits = number << _fractionalBits; 
+	this->_rawBits = number << this->_fractionalBits; 
 }
 
 Fixed::Fixed(const float number)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_rawBits = roundf(number * (1 << _fractionalBits)); 
-}
-
-float Fixed::toFloat(void) const
-{
-    return ((float)_rawBits / (1 << _fractionalBits));
-}
-
-int Fixed::toInt(void) const
-{
-    return (_rawBits >> _fractionalBits);
+	this->_rawBits = roundf(number * (1 << this->_fractionalBits)); 
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
@@ -44,6 +34,16 @@ Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 };
+
+float Fixed::toFloat(void) const
+{
+    return ((float)this->_rawBits / (float)(1 << this->_fractionalBits));
+}
+
+int Fixed::toInt(void) const
+{
+    return (this->_rawBits >> this->_fractionalBits);
+}
 
 int Fixed::getRawBits(void) const {
     std::cout << "getRawBits method called" << std::endl;
@@ -89,19 +89,19 @@ bool	Fixed::operator!=(const Fixed& other) const
 
 Fixed	Fixed::operator+(const Fixed& other) const
 {
-	return (Fixed(this->_rawBits + other.getRawBits()));
+	return (Fixed(this->toFloat() + other.toFloat()));
 }
 Fixed	Fixed::operator-(const Fixed& other) const
 {
-	return (Fixed(this->_rawBits - other.getRawBits()));
+	return (Fixed(this->toFloat() - other.toFloat()));
 }
 Fixed	Fixed::operator*(const Fixed& other) const
 {
-	return (Fixed(this->_rawBits * other.getRawBits()));
+	return (Fixed(this->toFloat() * other.toFloat()));
 }
 Fixed	Fixed::operator/(const Fixed& other) const
 {
-	return (Fixed(this->_rawBits / other.getRawBits()));
+	return (Fixed(this->toFloat() / other.toFloat()));
 }
 
 Fixed&	Fixed::operator++( void )

@@ -16,7 +16,7 @@ void of_open_file(std::ofstream &outfile, const char* filename)
     outfile.open(filename);
 	if (!outfile)
 	{
-		std::cerr << RED << "Error: cannot open input file.\n"
+		std::cerr << RED << "Error: cannot open output file.\n"
 			<< RESET;
 		std::exit(EXIT_FAILURE);
 	}

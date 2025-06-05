@@ -5,6 +5,7 @@ int	main(int ac, char **av)
 	
 	check_args(ac);
 
+	std::ostringstream	ss;
 	std::string		line;
 	std::string		filename = av[1];
 	std::string		s1 = av[2];
@@ -19,26 +20,26 @@ int	main(int ac, char **av)
 
 	if_open_file(infile, av[1]);
 	of_open_file(outfile, new_file.c_str());
+
+	ss << infile.rdbuf();
+	line = ss.str();
 	
-	while (std::getline(infile, line))
+	size_t	i = 0;
+	while (line[i])
 	{
-		size_t	i = 0;
-		while (line[i])
+		pos = line.substr(i).find(s1);
+		if (pos != std::string::npos)
 		{
-			pos = line.substr(i).find(s1);
-			if (pos != std::string::npos)
-			{
-				outfile << line.substr(i, pos);
-				outfile << s2;
-				i += pos + s1.length();
-			}
-			else
-			{
-				outfile << line.substr(i);
-				break ;
-			}
+			outfile << line.substr(i, pos);
+			outfile << s2;
+			i += pos + s1.length();
 		}
-		outfile << std::endl;
+		else
+		{
+			outfile << line.substr(i);
+			break ;
+		}
 	}
+	
 	return (EXIT_SUCCESS);
 }

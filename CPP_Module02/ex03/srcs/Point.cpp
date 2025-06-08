@@ -1,15 +1,15 @@
 #include "Point.hpp"
 
-Point::Point() {}
+Point::Point() : x(Fixed(0)), y(Fixed(0)) {}
 
 Point::Point(const Point& other) { *this = other; }
 
-Point::Point(float x, float y) : x(Fixed(x)), y(Fixed(y)) {}
+Point::Point(const float x, const float y) : x(Fixed(x)), y(Fixed(y)) {}
 
 Point& Point::operator=(const Point& other) {
     if (this != &other) {
-        this->x = other.getX();
-        this->y = other.getY();
+        (Fixed) this->x = other.getX();
+		(Fixed) this->y = other.getY();
     }
     return *this;
 }

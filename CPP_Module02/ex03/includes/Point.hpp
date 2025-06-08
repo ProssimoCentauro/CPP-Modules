@@ -7,7 +7,7 @@ class Point {
 public:
     Point();
     Point(const Point& other);
-    Point(float x, float y);
+    Point(const float x, const float y);
 	Point& operator=(const Point& other);
     ~Point();
 

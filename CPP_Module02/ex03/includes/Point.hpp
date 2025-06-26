@@ -16,6 +16,7 @@ public:
 
 	Fixed getX( void ) const;
 	Fixed getY( void ) const;
+	void printInfo( std::string name ) const;
 
 private:
 	Fixed const x;

@@ -1,4 +1,4 @@
-NAME = ClapTrap
+NAME = ScavTrap
 
 SRCS_FOLDER = ./srcs/
 INCLUDES_FOLDER = ./includes

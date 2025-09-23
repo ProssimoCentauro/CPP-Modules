@@ -1,16 +1,12 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
-{
-	this->name = "Bureaucrat";
-	this->grade = 100;
-}
+Bureaucrat::Bureaucrat() : name("Bureaucrat"), grade(100) {}
 
-Bureaucrat::Bureaucrat(const std::string name, int grade): name(name), grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade)
 {
 	if (grade < 1)
 	{
-		throw GradeTooHighExecption();
+		throw GradeTooHighException();
 	}
 	else if (grade > 150)
 	{
@@ -20,11 +16,9 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): name(name), grade(gra
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) { *this = other; }
 
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
-    if (this != &other) {
-        this->name = other.getName();
-		this->grade = other.getGrade();
-    }
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
+{
+	(void)other;
     return *this;
 }
 
@@ -59,7 +53,7 @@ void	Bureaucrat::decrementGrade( void )
 {
 	if (this->grade == 150)
 	{
-		throw GradeTooHighException();
+		throw GradeTooLowException();
 	}
 	else
 	{
@@ -67,7 +61,8 @@ void	Bureaucrat::decrementGrade( void )
 	}
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) {
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
+{
     os << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
     return os;
 }

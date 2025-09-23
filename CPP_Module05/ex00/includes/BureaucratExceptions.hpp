@@ -1,13 +1,13 @@
 #ifndef BUREAUCRATEXCEPTIONS_HPP
 #define BUREAUCRATEXCEPTIONS_HPP
 
-#include <exceptions>
+#include <exception>
 
 
 class GradeTooHighException : public std::exception
 {
 	public:
-		const char *what() const noexcept override
+		virtual const char *what() const throw()
 		{
 			return "Grade is too high!";
 		}
@@ -16,7 +16,7 @@ class GradeTooHighException : public std::exception
 class GradeTooLowException : public std::exception
 {
 	public:
-		const char* what() const noexcept override
+		virtual const char* what() const throw()
 		{
 			return "Grade is too low!";
 		}

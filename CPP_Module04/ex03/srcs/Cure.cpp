@@ -1,33 +1,22 @@
 #include "Cure.hpp"
+#include "ICharacter.hpp"
 
-Cure::Cure() : AMateria("cure") {
-    std::cout << "Cure constructed" << std::endl;
-}
+Cure::Cure() : AMateria("cure") {}
 
-Cure::Cure(const Cure& other) : AMateria(other) {
-    std::cout << "Cure copied" << std::endl;
-    *this = other;
-}
+Cure::Cure(const Cure& other) : AMateria(other) {}
 
 Cure& Cure::operator=(const Cure& other) {
-    std::cout << "Cure assigned" << std::endl;
-    if (this != &other) {
-        this->_type = other._type;
-    }
+    (void)other;
     return *this;
 }
 
-Cure::~Cure() {
-    std::cout << "Cure destructed" << std::endl;
+Cure::~Cure() {}
+
+AMateria* Cure::clone() const {
+    return new Cure(*this);
 }
 
-AMateria* cure::clone() const
-{
-	Cure *newCure = new Cure();
-	return (newCure);
+void Cure::use(ICharacter& target) {
+    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
-void cure::use(ICharacter& target)
-{
-	std::cout << "Cure: \"* heals " << target << "’s wounds *\"" << std::endl;
-}

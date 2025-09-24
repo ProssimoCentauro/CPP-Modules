@@ -1,20 +1,26 @@
-NAME = animals
+NAME = materia
 
-SRCS_FOLDER = ./srcs/
-INCLUDES_FOLDER = ./includes
-SRCS = $(SRCS_FOLDER)Animal.cpp $(SRCS_FOLDER)Cat.cpp $(SRCS_FOLDER)Dog.cpp $(SRCS_FOLDER)Brain.cpp $(SRCS_FOLDER)main.cpp
+SRCSF = ./srcs/
+INCLUDEF = ./includes
+
+SRCS = $(SRCSF)AMateria.cpp \
+       $(SRCSF)Character.cpp \
+       $(SRCSF)Cure.cpp \
+       $(SRCSF)Ice.cpp \
+       $(SRCSF)MateriaSource.cpp \
+       $(SRCSF)main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
-IFLAGS = -I $(INCLUDES_FOLDER)
+IFLAGS = -I $(INCLUDEF)
 RM = rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CPPFLAGS) $(IFLAGS) -o $(NAME) $(OBJS) 
+	$(CC) $(CPPFLAGS) $(IFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.cpp
 	$(CC) $(CPPFLAGS) $(IFLAGS) -c $< -o $@
@@ -28,3 +34,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+

@@ -1,33 +1,22 @@
 #include "Ice.hpp"
+#include "ICharacter.hpp"
 
-Ice::Ice() : AMateria("ice") {
-    std::cout << "Ice constructed" << std::endl;
-}
+Ice::Ice() : AMateria("ice") {}
 
-Ice::Ice(const Ice& other) :AMateria(other) {
-    std::cout << "Ice copied" << std::endl;
-    *this = other;
-}
+Ice::Ice(const Ice& other) : AMateria(other) {}
 
 Ice& Ice::operator=(const Ice& other) {
-    std::cout << "Ice assigned" << std::endl;
-    if (this != &other) {
-        this->_type = other._type;
-    }
+    (void)other;
     return *this;
 }
 
-Ice::~Ice() {
-    std::cout << "Ice destructed" << std::endl;
+Ice::~Ice() {}
+
+AMateria* Ice::clone() const {
+    return new Ice(*this);
 }
 
-AMateria* Ice::clone() const
-{
-	Ice *newIce = new Ice();
-	return (newIce);
+void Ice::use(ICharacter& target) {
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
-void Ice::use(ICharacter& target)
-{
-	std::cout << "Ice: \"shoots an ice bolt at " << target << " *\"" << std::endl;
-}

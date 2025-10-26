@@ -42,16 +42,16 @@ int main() {
         sleep(1);
 
         std::cout << RED << "❌ Charlie tries to sign (too low grade)" << RESET << std::endl;
-        charlie.signAForm(shrub);
+        charlie.signForm(shrub);
 
         std::cout << YELLOW << "✍️ Alice signs the form" << RESET << std::endl;
-        alice.signAForm(shrub);
+        alice.signForm(shrub);
 
         std::cout << RED << "⚙️ Charlie tries to execute (too low grade)" << RESET << std::endl;
-        charlie.executeAForm(shrub);
+        charlie.executeForm(shrub);
 
         std::cout << GREEN << "✅ Bob executes the Shrubbery form" << RESET << std::endl;
-        bob.executeAForm(shrub);
+        bob.executeForm(shrub);
 
     } catch (std::exception &e) {
         std::cout << RED << "⚠️ Exception: " << e.what() << RESET << std::endl;
@@ -68,14 +68,14 @@ int main() {
         sleep(1);
 
         std::cout << RED << "❌ Alice tries to execute unsigned form" << RESET << std::endl;
-        alice.executeAForm(robo);
+        alice.executeForm(robo);
 
         std::cout << YELLOW << "✍️ Alice signs the form" << RESET << std::endl;
-        alice.signAForm(robo);
+        alice.signForm(robo);
 
         std::cout << GREEN << "⚙️ Bob executes the robotomy multiple times!" << RESET << std::endl;
         for (int i = 0; i < 4; i++) {
-            bob.executeAForm(robo);
+            bob.executeForm(robo);
             sleep(1);
         }
 
@@ -94,11 +94,11 @@ int main() {
         sleep(1);
 
         std::cout << RED << "❌ Alice tries to sign (too low grade)" << RESET << std::endl;
-        alice.signAForm(pardon);
+        alice.signForm(pardon);
 
         std::cout << GREEN << "✍️ Bob signs and executes the form" << RESET << std::endl;
-        bob.signAForm(pardon);
-        bob.executeAForm(pardon);
+        bob.signForm(pardon);
+        bob.executeForm(pardon);
 
     } catch (std::exception &e) {
         std::cout << RED << "⚠️ Exception: " << e.what() << RESET << std::endl;

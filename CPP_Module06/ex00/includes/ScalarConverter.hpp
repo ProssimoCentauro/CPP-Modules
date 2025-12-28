@@ -2,6 +2,8 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <string>
 
 class ScalarConverter {
 private:
@@ -12,10 +14,10 @@ private:
 
 	static bool isInt(std::string literal);
 	static bool isFloat(std::string literal);
-	static bool isPseudoLiteral(std::string literal);
+	static int isPseudoLiteral(std::string literal, const std::string pseudo[]);
 	static bool isChar(std::string literal);
-	static bool isValid(std::string literal);
-	//static void printConvertion(std::string literal);
+	static bool isValid(std::string literal, const std::string pseudo[]);
+	static void printConvertion(int pseudo_index, std::string literal, const std::string pseudo[]);
 
 public:
 

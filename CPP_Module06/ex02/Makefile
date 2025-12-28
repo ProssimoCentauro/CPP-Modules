@@ -1,8 +1,8 @@
-NAME = serializer
+NAME = identifier
 
 SRCSF = ./srcs/
 INCLUDESF = ./includes
-SRCS = $(SRCSF)Serializer.cpp $(SRCSF)main.cpp
+SRCS = $(SRCSF)Base.cpp $(SRCSF)main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
